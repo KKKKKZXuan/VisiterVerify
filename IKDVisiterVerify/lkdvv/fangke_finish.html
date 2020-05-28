@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <title>IKD访客自主申请-完成</title>
+
+
+    <style type="text/css">
+            body,
+            html {
+                padding: 0px;
+                margin: auto;
+            }
+
+            .pic {
+                text-align: center;
+                width: 55%;
+                /* display: block; */
+                /* margin-bottom: 20px; */
+            }
+
+            /* .bottom{
+            background-color:bisque;
+            text-align: center;
+            font: 1em sans-serif;
+            font-size: 150px;
+        } */
+
+            .coQRcode {
+                width: 60%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            /* 图片居中控件 */
+            .ui-flex {
+                display: -webkit-box !important;
+                display: -webkit-flex !important;
+                display: -ms-flexbox !important;
+                display: flex !important;
+                -webkit-flex-wrap: wrap;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap
+            }
+
+                .ui-flex, .ui-flex *, .ui-flex :after, .ui-flex :before {
+                    box-sizing: border-box
+                }
+
+                    .ui-flex.justify-center {
+                        -webkit-box-pack: center;
+                        -webkit-justify-content: center;
+                        -ms-flex-pack: center;
+                        justify-content: center
+                    }
+
+                    .ui-flex.center {
+                        -webkit-box-pack: center;
+                        -webkit-justify-content: center;
+                        -ms-flex-pack: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        -webkit-align-items: center;
+                        -ms-flex-align: center;
+                        align-items: center
+                    }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- 页眉 -->
+    <div style="font-size: 25px; background-color:#bd183a ; color: white; text-align: center; "><img src="../Images/IKD_logo.gif" height="23px" />访客自助申请</div>
+    <br />
+    <br />
+
+    <!-- thanks图片 -->
+    <div class="ui-flex justify-center center">
+        <img class="pic" src="../Images/thanks.png" alt="感谢您的配合" style="display: inline-block;" />
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+
+    <!-- 完成告示标语 -->
+    <div style="text-align: center;">
+        <i class="layui-icon layui-icon-face-smile" style="font-size: 30px; color: #1E9FFF; "> 感谢您的配合</i>
+    </div>
+
+    <div style="text-align: center; width: auto;">
+        <br />
+        <h2 style="color:darkorange;">请注意查收短信</h2>
+    </div>
+    <br />
+    <br />
+
+    <!-- 再次填报button -->
+    <div class="layui-form">
+        <div class="lan-layout-admin-box " style="text-align: center;">
+            <a class="layui-btn layui-btn-lg layui-btn-radius layui-btn-normal" id="aa" href="./fangke_shenbao.html" style="font-size: middle;">
+                再次填报信息
+            </a>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <!-- 公司公众号QR -->
+    <!-- @TODO -->
+    <div style="text-align: center;">
+        <div style="font-size: large;">欢迎关注微信</div>
+        <br />
+        <img class="coQRcode" src="../images/QRtest.png" alt="IKD公众号" style="width: 40%" ; />
+    </div>
+
+    <footer>
+
+        <!-- 页脚 -->
+        <div style="text-align: center;">
+            <br />
+            地址：中国宁波市江北区金山路588号<br />
+            <br />
+            IKD Group 2020
+            <br />
+            <br />
+        </div>
+
+    </footer>
+
+    <!--<script>
+
+        $(document).ready(function () {
+            document.querySelector("#aa").href += "?t=" + Math.random();
+            document.querySelector("#bb").href += "?t=" + Math.random();
+            //记录访问ip
+            //document.write('IP地址:' + returnCitySN["cip"] + ', CID:' + returnCitySN["cid"] + ', 地区:' + returnCitySN["cname"] + ",浏览器版本:" + getBrowserInfo());
+            var BrowserInfo = getBrowserInfo();
+            $.ajax({
+                type: "POST",
+                url: "./Ajax.ashx",
+                data: {
+                    type: "4",
+                    IpAdress: returnCitySN["cip"],
+                    CitySN: returnCitySN["cname"],
+                    BrowserInfo: ""
+                },
+                success: function (e) {
+
+                }
+            });
+        });
+
+        function getBrowserInfo() {
+            var agent = navigator.userAgent.toLowerCase();
+
+            var regStr_ie = /msie [\d.]+;/gi;
+            var regStr_ff = /firefox\/[\d.]+/gi
+            var regStr_chrome = /chrome\/[\d.]+/gi;
+            var regStr_saf = /safari\/[\d.]+/gi;
+
+            //IE
+            if (agent.indexOf("msie") > 0) {
+                return agent.match(regStr_ie);
+            }
+
+            //firefox
+            if (agent.indexOf("firefox") > 0) {
+                return agent.match(regStr_ff);
+            }
+
+            //Chrome
+            if (agent.indexOf("chrome") > 0) {
+                return agent.match(regStr_chrome);
+            }
+
+            //Safari
+            if (agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0) {
+                return agent.match(regStr_saf);
+            }
+        }
+
+    </script>-->
+
+</body>
+
+</html>

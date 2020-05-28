@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <script src="../layui/layui.js"></script>
+    <!-- <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="../layui/css/layui.css" />
+    <title>IKD访客自主申请-信息页</title>
+    <style>
+        body,
+        html{
+            padding: 0px;
+            margin: auto;
+        }
+
+        .bg{
+            width: 100%;
+        }
+    </style>
+</head >
+
+<body>
+
+    <!-- 页眉 -->
+    <div style="font-size: 25px; background-color:#bd183a ; color: white; text-align: center; ">
+        <img src="../Images/IKD_logo.gif" height="23px" />
+        访客自助申请
+    </div>
+
+    <br />
+    <br />
+
+    <!--<div style="text-align:center">
+        <span id="UserName"></span>
+        <span id="WelcomeL"></span>
+    </div>
+
+
+    <br />
+    <br />-->
+
+    <!-- layui表单 -->
+    <form id="" class="layui-form" action="" style="width: 85%; font-size:medium;">
+
+        <!-- 姓名框 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="layui-badge-dot" style="background-color: red;"></span>
+                &ensp;姓&nbsp;&nbsp;名
+            </label>
+            <div class="layui-input-block">
+                <input type="text"
+                       id="name"
+                       name="name"
+                       lay-verify="required"
+                       lay-reqText="还没填名字哦"
+                       lay-filter="OutsiderForm"
+                       lay-verType="tips"
+                       autocomplete="off"
+                       placeholder="例如：张三"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <!-- 手机号码框 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <span class="layui-badge-dot" style="background-color: red;"></span>
+                &ensp;手&nbsp;&nbsp;机
+            </label>
+            <div class="layui-input-block">
+                <input type="text"
+                       id="phone"
+                       name="phone"
+                       lay-verify="required|phone|number"
+                       lay-reqText="还没填电话哦"
+                       lay-filter="OutsiderForm"
+                       lay-verType="tips"
+                       autocomplete="off"
+                       placeholder="例如：1XXXXXXXXXX"
+                       class="layui-input">
+                <div class="layui-form-mid layui-word-aux">
+                    用于接收通行码
+                </div>
+            </div>
+        </div>
+
+        <!--<div id="InsiderID"></div>-->
+
+        <!-- 联系人框 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="layui-badge-dot" style="background-color: red;"></span>&ensp;联系人</label>
+            <div class="layui-input-block">
+                <!--<div id="InsiderID"></div>-->
+
+                <select id="InsiderID"
+                        name="InsiderID"
+                        lay-search
+                        type="text"
+                        lay-verify="required"
+                        lay-reqText="还没确认联系人哦"
+                        lay-filter="OutsiderForm"
+                        lay-verType="tips"
+                        autocomplete="off">
+                    <option value="">填写公司的联系人姓名</option>
+                    <!--<option value="0">TEST</option>-->
+                    <option></option>
+                </select>
+
+                <div class="layui-form-mid layui-word-aux">
+                    也可搜索手机号末四位查询
+                </div>
+            </div>
+        </div>
+
+        <!-- 备注框 -->
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">备&nbsp;注</label>
+            <div class="layui-input-block">
+                <textarea name="desc"
+                          placeholder="请输入内容"
+                          class="layui-textarea"
+                          lay-filter="OutsiderForm"></textarea>
+            </div>
+        </div>
+
+        <!-- 提交及重置按钮 -->
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button lay-filter="SMB" type="button" lay-submit="" class="layui-btn" style="background-color: #bd183a;" >
+                    立即提交
+                </button>
+
+                <!-- <button type="button" id="ckBtn" name="Submit" >
+                    按钮
+                </button> -->
+
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+    <br />
+    <br />
+
+    <footer>
+        <!-- 页脚 -->
+        <div style="text-align: center;">
+            <br />
+            <br />
+            地址：中国宁波市江北区金山路588号<br />
+            <br />
+            IKD Group 2020
+            <br />
+            <br />
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        //运行自动加载的部分
+        $(document).ready(function () {
+
+            //动态从数据库获取内部人员信息
+            $.get("../Ashx/AjaxHandler.ashx", { type: "GetInsider" },
+                function (data) {
+                    $("#InsiderID").append(data);
+                    layui.form.render();
+                    layui.element.render();
+                });
+
+            //防止加载缓存，自动生成乱码后缀
+            if (window.location.href.toString().indexOf("?t=") == -1) {
+                window.location.href += "?t=" + Math.floor(Math.random()*10e10);
+            }
+        })
+
+        //加载layui的脚本
+        layui.use(['layer', 'form', 'element'], function () {
+
+            jQuery.support.cors = true;
+            //var $ = layer.jQuery;
+
+            //加载layui部分渲染模块
+            var layer = layui.layer
+                , form = layui.form
+                , laydate = layui.laydate
+                , element = layui.element;
+
+            //监听提交
+            form.on('submit(SMB)', function (data) {
+
+                //打包成JSON格式
+                JSON.stringify(data.field)
+
+                //创建姓名电话联系人ID备注和时间
+                var name = data.field.name;
+                var OutsiderID = data.field.name;
+                var phone = data.field.phone;
+                var InsiderID = data.field.InsiderID;
+                var desc = data.field.desc;
+                var d = new Date();
+                var time = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
+
+                //跳出等待小圆圈防止重复提交
+                var loadIndex = layer.load(0);
+
+
+                //发送访客信息到CS
+
+                //以ajax格式发送访客信息
+                $.ajax({
+                    type: "post",
+                    url: "../ashx/ajaxhandler.ashx",
+                    data: {
+                        type: "SaveOutsiderInfo",
+                        name: name,
+                        outsiderID: OutsiderID,
+                        phone: phone,
+                        insiderid: InsiderID,
+                        desc: desc,
+                        time: time
+                    },
+
+                    success: function (e) {
+
+                        //关闭小圆圈
+                        layer.close(loadIndex);
+
+                        if (e > 0) {
+
+                            jumptofinish();
+
+                            layer.alert("感谢您的配合，请注意查收短信")
+
+                            //layer.confirm(e.cintext, {
+                            //    title: ['提交成功'],
+                            //    content: '感谢您的配合，请注意查收短信',
+                            //    btn: ['确认']
+                            //}
+                            //    , function (layindex) {
+                            //        layer.close(layindex);
+                            //        window.location.href = "./fangke_finish.html";
+                            //    })
+                        }
+                        else {
+                            layer.alert("哦吼，服务器崩溃了，程序员小哥哥尽快恢复中 " + e, function () {
+                                var index = layer.alert();
+                                layer.close(index);
+                                t = 3;
+
+                                //window.location.href = "./fangke_finish.html";
+                            })
+                        }
+                    }
+
+                })
+
+                return false;
+
+            });
+
+            form.verify({
+                phone: [
+                    /^1[3456789]\d{9}$/
+                    , '手机号码有误，请重新填写'
+                ]
+            }); 
+
+        });
+
+        //3S后自动跳转到finish页
+        var t = 3;
+        function jumptofinish() {
+            t -= 1;
+            if (t == 0) {
+                window.location.href = "./fangke_finish.html";
+            }
+            setTimeout("jumptofinish()",1000);
+        }
+
+
+        // $(document).ready(function () {
+        //     document.querySelector("#aa").href += "?t=" + Math.random();
+        //     document.querySelector("#bb").href += "?t=" + Math.random();
+        //     //记录访问ip
+        //     //document.write('IP地址:' + returnCitySN["cip"] + ', CID:' + returnCitySN["cid"] + ', 地区:' + returnCitySN["cname"] + ",浏览器版本:" + getBrowserInfo());
+        //     var BrowserInfo = getBrowserInfo();
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "./Ajax.ashx",
+        //         data: {
+        //             type: "4",
+        //             IpAdress: returnCitySN["cip"],
+        //             CitySN: returnCitySN["cname"],
+        //             BrowserInfo: ""
+        //         },
+        //         success: function (e) {
+        //             //layer.alert("成了")
+        //         }
+        //     });
+        // });
+
+        // function getBrowserInfo() {
+        //     var agent = navigator.userAgent.toLowerCase();
+
+        //     var regStr_ie = /msie [\d.]+;/gi;
+        //     var regStr_ff = /firefox\/[\d.]+/gi
+        //     var regStr_chrome = /chrome\/[\d.]+/gi;
+        //     var regStr_saf = /safari\/[\d.]+/gi;
+
+        //     //IE
+        //     if (agent.indexOf("msie") > 0) {
+        //         return agent.match(regStr_ie);
+        //     }
+
+        //     //firefox
+        //     if (agent.indexOf("firefox") > 0) {
+        //         return agent.match(regStr_ff);
+        //     }
+
+        //     //Chrome
+        //     if (agent.indexOf("chrome") > 0) {
+        //         return agent.match(regStr_chrome);
+        //     }
+
+        //     //Safari
+        //     if (agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0) {
+        //         return agent.match(regStr_saf);
+        //     }
+        // }
+
+    </script>
+
+</body>
+
+
+
+</html>
