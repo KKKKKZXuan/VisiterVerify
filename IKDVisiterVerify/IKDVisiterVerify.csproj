@@ -264,7 +264,7 @@
     <Content Include="layui\lay\modules\upload.js" />
     <Content Include="layui\lay\modules\util.js" />
     <Content Include="lkdvv\fangke_finish.html" />
-    <Content Include="lkdvv\fangke_index.html" />
+    <Content Include="index.html" />
     <Content Include="lkdvv\fangke_shenbao.html" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jQuery-2.2.0.min.js" />
