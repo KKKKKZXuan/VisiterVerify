@@ -147,6 +147,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Images\IKDGZH.png" />
     <Content Include="Images\IKD_logo.gif" />
     <Content Include="Images\QRtest.png" />
     <Content Include="Images\thanks.png" />

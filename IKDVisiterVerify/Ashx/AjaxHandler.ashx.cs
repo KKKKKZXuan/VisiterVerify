@@ -85,6 +85,9 @@ namespace IKDWebApp.Ashx
             string outsiderID = context.Request["outsiderID"].ToString();
             string phone = context.Request["phone"].ToString();
             string InsiderID = context.Request["InsiderID"].ToString();
+            string ousiderType = context.Request["ousiderType"].ToString();
+            string numberofPerson = context.Request["numberofPerson"].ToString();
+            string company = context.Request["company"].ToString();
             string desc = context.Request["desc"].ToString();
             string lTimeNow = context.Request["time"].ToString();
 
@@ -112,7 +115,7 @@ namespace IKDWebApp.Ashx
                 //创建主表单
                 IKDVisiterVerify.WorkflowService.WorkflowMainTableInfo mainTableInfo = new IKDVisiterVerify.WorkflowService.WorkflowMainTableInfo();
                 IKDVisiterVerify.WorkflowService.WorkflowRequestTableRecord[] requestTableRecords = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableRecord[1];
-                IKDVisiterVerify.WorkflowService.WorkflowRequestTableField[] requestTableFields = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField[5];
+                IKDVisiterVerify.WorkflowService.WorkflowRequestTableField[] requestTableFields = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField[9];
 
                 //向主表单填入信息
                 requestTableFields[0] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField
@@ -147,7 +150,7 @@ namespace IKDWebApp.Ashx
 
                 requestTableFields[3] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField
                 {
-                    //备注
+                    //来访事由
                     fieldName = "bz",
                     fieldValue = desc,
                     fieldOrder = 0,
@@ -174,6 +177,36 @@ namespace IKDWebApp.Ashx
                 //    view = true,
                 //    edit = true
                 //};
+
+                requestTableFields[6] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField
+                {
+                    //来访对象
+                    fieldName = "lfdx",
+                    fieldValue = ousiderType,
+                    fieldOrder = 0,
+                    view = true,
+                    edit = true
+                };
+
+                requestTableFields[7] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField
+                {
+                    //来访人数
+                    fieldName = "lfrs",
+                    fieldValue = numberofPerson,
+                    fieldOrder = 0,
+                    view = true,
+                    edit = true
+                };
+
+                requestTableFields[8] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableField
+                {
+                    //来访单位
+                    fieldName = "lfdw",
+                    fieldValue = company,
+                    fieldOrder = 0,
+                    view = true,
+                    edit = true
+                };
 
                 //主表单填写结束
                 requestTableRecords[0] = new IKDVisiterVerify.WorkflowService.WorkflowRequestTableRecord();
