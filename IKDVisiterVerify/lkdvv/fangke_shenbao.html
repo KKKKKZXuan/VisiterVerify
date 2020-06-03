@@ -41,6 +41,11 @@
             color: white !important;
         }
 
+        .layui-layer {
+            background-color: #393d49 !important;
+            color: white !important;
+        }
+
         /*.layui-anim-upbit {
             background-color: #393d49 !important;
             color: white !important;
@@ -57,21 +62,8 @@
         访客自助申请
     </div>
 
-    <!-- <div class="layui-progress layui-progress-big" lay-showpercent="true">
-        <div class="layui-progress-bar" style="color: #bd183a;" lay-percent="5 / 10"></div>
-    </div> -->
-
     <br />
     <br />
-
-    <!--<div style="text-align:center">
-        <span id="UserName"></span>
-        <span id="WelcomeL"></span>
-    </div>
-
-
-    <br />
-    <br />-->
 
     <!-- layui表单 -->
     <form id="" class="layui-form" action="" style="width: 90%; font-size:medium;">
@@ -200,7 +192,7 @@
                         lay-verType="tips"
                         autocomplete="off">
                     <option value="">填写公司的联系人姓名</option>
-                    <option value="0">TEST</option>
+                    <!--<option value="0">TEST</option>-->
                 </select>
 
                 <div class="layui-form-mid layui-word-aux">
@@ -228,10 +220,6 @@
                 <button lay-filter="SMB" type="button" lay-submit="" class="layui-btn" style="background-color: #bd183a;">
                     立即提交
                 </button>
-
-                <!-- <button type="button" id="ckBtn" name="Submit" >
-                按钮
-            </button> -->
 
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
@@ -305,7 +293,7 @@
                 var InsiderID = data.field.InsiderID;
                 var desc = data.field.desc;
                 var d = new Date();
-                var time = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate();
+                var time = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
 
                 //跳出等待小圆圈防止重复提交
                 var loadIndex = layer.load(0);
@@ -341,15 +329,6 @@
 
                             layer.alert("感谢您的配合，请注意查收短信")
 
-                            //layer.confirm(e.cintext, {
-                            //    title: ['提交成功'],
-                            //    content: '感谢您的配合，请注意查收短信',
-                            //    btn: ['确认']
-                            //}
-                            //    , function (layindex) {
-                            //        layer.close(layindex);
-                            //        window.location.href = "./fangke_finish.html";
-                            //    })
                         }
                         else {
                             layer.alert("哦吼，服务器崩溃了，程序员小哥哥尽快恢复中 " + e, function () {
@@ -357,7 +336,6 @@
                                 layer.close(index);
                                 t = 3;
 
-                                //window.location.href = "./fangke_finish.html";
                             })
                         }
                     }
@@ -375,13 +353,6 @@
                 ]
             }); 
 
-
-            //var active = {
-            //    setPercent: function(){
-            //    //设置50%进度
-            //    element.progress('demo', '50%')
-            //    }
-            //}
         });
 
         //3S后自动跳转到finish页
@@ -393,57 +364,6 @@
             }
             setTimeout("jumptofinish()",1000);
         }
-
-
-        // $(document).ready(function () {
-        //     document.querySelector("#aa").href += "?t=" + Math.random();
-        //     document.querySelector("#bb").href += "?t=" + Math.random();
-        //     //记录访问ip
-        //     //document.write('IP地址:' + returnCitySN["cip"] + ', CID:' + returnCitySN["cid"] + ', 地区:' + returnCitySN["cname"] + ",浏览器版本:" + getBrowserInfo());
-        //     var BrowserInfo = getBrowserInfo();
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "./Ajax.ashx",
-        //         data: {
-        //             type: "4",
-        //             IpAdress: returnCitySN["cip"],
-        //             CitySN: returnCitySN["cname"],
-        //             BrowserInfo: ""
-        //         },
-        //         success: function (e) {
-        //             //layer.alert("成了")
-        //         }
-        //     });
-        // });
-
-        // function getBrowserInfo() {
-        //     var agent = navigator.userAgent.toLowerCase();
-
-        //     var regStr_ie = /msie [\d.]+;/gi;
-        //     var regStr_ff = /firefox\/[\d.]+/gi
-        //     var regStr_chrome = /chrome\/[\d.]+/gi;
-        //     var regStr_saf = /safari\/[\d.]+/gi;
-
-        //     //IE
-        //     if (agent.indexOf("msie") > 0) {
-        //         return agent.match(regStr_ie);
-        //     }
-
-        //     //firefox
-        //     if (agent.indexOf("firefox") > 0) {
-        //         return agent.match(regStr_ff);
-        //     }
-
-        //     //Chrome
-        //     if (agent.indexOf("chrome") > 0) {
-        //         return agent.match(regStr_chrome);
-        //     }
-
-        //     //Safari
-        //     if (agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0) {
-        //         return agent.match(regStr_saf);
-        //     }
-        // }
 
     </script>
 

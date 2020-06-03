@@ -34,13 +34,6 @@
                 /* margin-bottom: 20px; */
             }
 
-            /* .bottom{
-            background-color:bisque;
-            text-align: center;
-            font: 1em sans-serif;
-            font-size: 150px;
-        } */
-
             .coQRcode {
                 width: 60%;
                 display: block;
@@ -151,60 +144,6 @@
         </div>
 
     </footer>
-
-    <!--<script>
-
-        $(document).ready(function () {
-            document.querySelector("#aa").href += "?t=" + Math.random();
-            document.querySelector("#bb").href += "?t=" + Math.random();
-            //记录访问ip
-            //document.write('IP地址:' + returnCitySN["cip"] + ', CID:' + returnCitySN["cid"] + ', 地区:' + returnCitySN["cname"] + ",浏览器版本:" + getBrowserInfo());
-            var BrowserInfo = getBrowserInfo();
-            $.ajax({
-                type: "POST",
-                url: "./Ajax.ashx",
-                data: {
-                    type: "4",
-                    IpAdress: returnCitySN["cip"],
-                    CitySN: returnCitySN["cname"],
-                    BrowserInfo: ""
-                },
-                success: function (e) {
-
-                }
-            });
-        });
-
-        function getBrowserInfo() {
-            var agent = navigator.userAgent.toLowerCase();
-
-            var regStr_ie = /msie [\d.]+;/gi;
-            var regStr_ff = /firefox\/[\d.]+/gi
-            var regStr_chrome = /chrome\/[\d.]+/gi;
-            var regStr_saf = /safari\/[\d.]+/gi;
-
-            //IE
-            if (agent.indexOf("msie") > 0) {
-                return agent.match(regStr_ie);
-            }
-
-            //firefox
-            if (agent.indexOf("firefox") > 0) {
-                return agent.match(regStr_ff);
-            }
-
-            //Chrome
-            if (agent.indexOf("chrome") > 0) {
-                return agent.match(regStr_chrome);
-            }
-
-            //Safari
-            if (agent.indexOf("safari") > 0 && agent.indexOf("chrome") < 0) {
-                return agent.match(regStr_saf);
-            }
-        }
-
-    </script>-->
 
 </body>
 

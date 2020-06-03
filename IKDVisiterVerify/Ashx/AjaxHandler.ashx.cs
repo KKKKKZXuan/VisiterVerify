@@ -5,6 +5,7 @@ namespace IKDWebApp.Ashx
 {
     /// <summary>
     /// AjaxHandler 的摘要说明
+    /// by Ken 20200601
     /// </summary>
     public class AjaxHandler : IHttpHandler
 	{
